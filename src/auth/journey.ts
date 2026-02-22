@@ -7,7 +7,7 @@ import type {
   JourneySuccess,
   StepType,
 } from '../types/journey.js';
-import { JourneyStepType } from './client-inputs/client-input.js';
+import { JourneyStepType } from '../client-inputs/client-input.js';
 
 export class JourneyResponse extends BasicTharosContext {
   private journeyResponsePayload: JourneyResponsePayload;

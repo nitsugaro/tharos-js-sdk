@@ -2,6 +2,7 @@ export enum StepType {
   USER_NAME = 'UserName',
   PASSWORD = 'Password',
   METADATA = 'Metadata',
+  CHOICE = 'Choice',
 }
 
 export interface ClientInput {
@@ -9,7 +10,7 @@ export interface ClientInput {
   step_type: StepType;
   type: string;
   send_back: boolean;
-  output: Map<string, any>;
+  output: Record<string, any>;
   input: any;
 }
 
@@ -24,7 +25,7 @@ export interface JourneyResponsePayload {
   client_inputs: ClientInput[];
   client_error?: {
     error: string;
-    details?: Map<string, any>;
+    details?: Record<string, any>;
   };
 }
 

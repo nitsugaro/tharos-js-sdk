@@ -1,5 +1,5 @@
-import { BasicTharosContext, type TharosImpl } from '../../tharos.js';
-import type { ClientInput } from '../../types/journey.js';
+import { BasicTharosContext, type TharosImpl } from '../tharos.js';
+import type { ClientInput } from '../types/journey.js';
 
 export class JourneyStepType extends BasicTharosContext {
   private clientInput: ClientInput;

@@ -3,7 +3,13 @@ import { User } from './auth/user.js';
 import { TharosConfig } from './config.js';
 import { ApiClient } from './http.js';
 import type { Config, OAuth } from './types/config.js';
-import './auth/client-inputs/index.js';
+export * from './client-inputs/index';
+export * from './types/index';
+export * from './auth/index';
+export * from './config';
+export * from './error';
+export * from './http';
+export * from './tharos';
 
 export class Tharos {
   public readonly config: TharosConfig;
