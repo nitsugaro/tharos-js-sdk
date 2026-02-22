@@ -39,10 +39,19 @@ export class JourneyRequestProcess extends BasicTharosContext {
   public async start(
     payload: { journey_id: string } | { resume_id: string },
     executor: JourneyExecutor,
-    options?: { headers: Map<string, string> }
+    options?: { headers?: Record<string, string>; params?: Record<string, string> }
   ) {
+    let uri = `/realms/${this.ctx.config.realm}/journeys/auth`;
+    if (options?.params) {
+      uri +=
+        '?' +
+        Object.entries(options.params)
+          .map((val) => val.join('='))
+          .join('&');
+    }
+
     let journeyResponse = await this.ctx.api.post<JourneyResponsePayload | JourneyFailure | JourneySuccess>(
-      `/realms/${this.ctx.config.realm}/journeys/auth`,
+      uri,
       payload,
       {
         headers: options?.headers as any,
