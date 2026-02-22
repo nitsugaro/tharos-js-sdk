@@ -63,13 +63,10 @@ export class JourneyRequestProcess extends BasicTharosContext {
       let process = new JourneyResponse(journeyResponse, this.ctx);
       await executor.onNewStep(process);
 
-      journeyResponse = await this.ctx.api.post<JourneyResponsePayload | JourneyFailure | JourneySuccess>(
-        `/realms/${this.ctx.config.realm}/journeys/auth`,
-        {
-          journey_token: journeyResponse.journey_token,
-          client_inputs: process.getAllClientInputs().map((el) => el.getPayload()),
-        }
-      );
+      journeyResponse = await this.ctx.api.post<JourneyResponsePayload | JourneyFailure | JourneySuccess>(uri, {
+        journey_token: journeyResponse.journey_token,
+        client_inputs: process.getAllClientInputs().map((el) => el.getPayload()),
+      });
     }
 
     if (journeyResponse.hasOwnProperty('session_id')) {
